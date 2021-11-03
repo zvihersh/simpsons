@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
+import { AccountsService } from '../services/accounts.service';
 
 
 @Component({
@@ -10,25 +12,25 @@ import { User } from '../models/user';
 })
 export class UserSelectionComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private accountsService: AccountsService, private router: Router) { }
 
   users: User[] = [];
   selectedUser: User;
 
   ngOnInit(): void {
-    this.getUsers();
-  }
-
-  userSelected(user: User) {
-    console.log(user);
-  }
-
-  getUsers() {
-    this.httpClient.get<User[]>('assets/data/users.json').subscribe(users => {
+    this.accountsService.getUsers().subscribe(users => {
       if (users && users.length > 0) {
         this.users = users;
       }
     });
   }
+
+  userSelected(user: User) {
+    if (user && user.id) {
+      this.router.navigateByUrl(`comments/${user.id}`);
+    }
+  }
+
+  
 
 }

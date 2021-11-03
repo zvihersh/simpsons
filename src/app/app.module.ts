@@ -7,14 +7,14 @@ import { UserSelectionComponent } from './user-selection/user-selection/user-sel
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CommetsComponent } from './commets/commets.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserSelectionComponent,
-    CommetsComponent
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
