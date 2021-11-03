@@ -1,0 +1,9 @@
+<h4>User</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Select User</mat-label>
+    <mat-select (selectionChange)="userSelected($event.value)">
+      <mat-option *ngFor="let user of users" [value]="user">
+       {{user.displayName}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
